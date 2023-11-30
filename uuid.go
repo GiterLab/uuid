@@ -194,11 +194,11 @@ func (uuid UUID) String() string {
 	return string(buf[:])
 }
 
-// StringWithoutDashes returns the string form of uuid without dashes,
+// StringWithoutHyphen returns the string form of uuid without hyphen,
 // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx, or "" if uuid is invalid.
-func (uuid UUID) StringWithoutDashes() string {
+func (uuid UUID) StringWithoutHyphen() string {
 	var buf [32]byte
-	encodeHexWithoutDashes(buf[:], uuid)
+	encodeHexWithoutHyphen(buf[:], uuid)
 	return string(buf[:])
 }
 
@@ -223,7 +223,7 @@ func encodeHex(dst []byte, uuid UUID) {
 	hex.Encode(dst[24:], uuid[10:])
 }
 
-func encodeHexWithoutDashes(dst []byte, uuid UUID) {
+func encodeHexWithoutHyphen(dst []byte, uuid UUID) {
 	hex.Encode(dst, uuid[:4])
 	hex.Encode(dst[8:12], uuid[4:6])
 	hex.Encode(dst[12:16], uuid[6:8])
