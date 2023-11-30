@@ -12,7 +12,8 @@ change is the ability to represent an invalid UUID (vs a NIL UUID).
 ## Install
 
 ```sh
-go get github.com/GiterLab/uuid
+go get github.com/GiterLab/uuid for v1
+go get github.com/GiterLab/uuid/v2 for v2
 ```
 
 ## Mark
