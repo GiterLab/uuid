@@ -86,6 +86,17 @@ func (uuid UUID) String() string {
 		b[:4], b[4:6], b[6:8], b[8:10], b[10:])
 }
 
+// StringWithoutDashes returns the string form of uuid without dashes,
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx, or "" if uuid is invalid.
+func (uuid UUID) StringWithoutDashes() string {
+	if uuid == nil || len(uuid) != 16 {
+		return ""
+	}
+	b := []byte(uuid)
+	return fmt.Sprintf("%08x%04x%04x%04x%012x",
+		b[:4], b[4:6], b[6:8], b[8:10], b[10:])
+}
+
 // URN returns the RFC 2141 URN form of uuid,
 // urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx,  or "" if uuid is invalid.
 func (uuid UUID) URN() string {
